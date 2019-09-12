@@ -1,0 +1,40 @@
+{
+  "name": "kommit",
+  "version": "0.1.0",
+  "description": "Format your git commit messages by a set of plugins",
+  "main": "./dist",
+  "typings": "./types",
+  "bin": {
+    "kommit": "./bin/index.js"
+  },
+  "scripts": {
+    "start": "tacer-script start",
+    "build": "tacer-script build",
+    "test": "tacer-script test"
+  },
+  "author": "Idan Loo <im@siwei.lu>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/fs-extra": "^8.0.0",
+    "@types/inquirer": "^6.5.0",
+    "tacer-template-bin": "^0.5.0"
+  },
+  "dependencies": {
+    "@idan-loo/middleware": "^1.0.0",
+    "@types/jest": "^24.0.15",
+    "fs-extra": "^8.1.0",
+    "inquirer": "^7.0.0",
+    "ora": "^3.4.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IdanLoo/kommit"
+  },
+  "keywords": [
+    "git",
+    "commit",
+    "message",
+    "format",
+    "cli"
+  ]
+}

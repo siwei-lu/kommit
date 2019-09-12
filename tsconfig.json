@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "es2015",
+    "baseUrl": "./src",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "paths": {
+      "~/*": ["./*"]
+    },
+    "declaration": true,
+    "declarationDir": "./types"
+  }
+}
