@@ -12,16 +12,13 @@ export async function commit(ctx: Context) {
   const message = messageOf(ctx)
 
   return new Promise((resolve, reject) => {
-    const cp = spawn('git', ['commit', '-m', message]).addListener(
-      'exit',
-      code => {
-        if (code === 0) {
-          return resolve()
-        }
-
-        reject()
+    spawn('git', ['commit', '-m', message]).addListener('exit', code => {
+      if (code === 0) {
+        return resolve()
       }
-    )
+
+      reject()
+    })
   })
 }
 

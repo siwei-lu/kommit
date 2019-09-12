@@ -1,5 +1,5 @@
 import { NumberQuestion, prompt } from 'inquirer'
-import { Next } from '@idan-loo/middleware/types'
+import { Next } from '@idan-loo/middleware'
 import { Context } from '~/types'
 
 const cardQuestion: NumberQuestion = {

@@ -1,6 +1,6 @@
 import { prompt, ListQuestion } from 'inquirer'
 import { Context } from '~/types'
-import { Next } from '@idan-loo/middleware/types'
+import { Next } from '@idan-loo/middleware'
 
 const typeQuestion: ListQuestion = {
   type: 'list',

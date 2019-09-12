@@ -1,5 +1,5 @@
 import { Context } from '~/types'
-import { Next } from '@idan-loo/middleware/types'
+import { Next } from '@idan-loo/middleware'
 import { commit } from '~/git'
 
 export async function doCommit(ctx: Context, next: Next) {
