@@ -1,0 +1,6 @@
+.DS_Store
+.kommit/
+*.log
+__tests__/
+node_modules/
+src/
