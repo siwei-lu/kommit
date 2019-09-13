@@ -95,6 +95,16 @@ module.exports = {
 
   To know more things about how to create middlewares, check [here](https://github.com/IdanLoo/middleware)
 
+- scopes: String[]
+
+  The scopes field consists of a set of scopes. It will be chosen while committing.
+
+  ```js
+  module.exports = {
+    scopes: ['middlewares', 'config', 'git', 'ui'],
+  }
+  ```
+
 ## Summary
 
 Commit Message Format is playing a more and more important role on cooperating development. [Angular Commit Message Format](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#commit-message-format), one of the most well known formats, helps us make git flows clearer and easier to generate documentations.
