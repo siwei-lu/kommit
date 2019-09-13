@@ -38,5 +38,8 @@
     "message",
     "format",
     "cli"
-  ]
+  ],
+  "engines": {
+    "node": ">8.0.0"
+  }
 }
