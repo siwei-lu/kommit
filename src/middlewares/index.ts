@@ -4,11 +4,12 @@ import { checkPath } from './path'
 import { acquireType } from './type'
 import { acquireSubject } from './subject'
 import { acquireBody } from './body'
-import { acquireCardId } from './card'
 import { acquireBreakingChange } from './breakingChange'
 import { doCommit } from './commit'
 import { Context } from '~/types'
 import { getConfig } from '~/config'
+import { acquireScope } from './scope'
+import { acquireCoAuthor } from './author'
 
 export async function emptyWare(_: Context, next: Next) {
   return next()
@@ -20,10 +21,11 @@ export async function exec(ctx: Context) {
   const execute = compose(
     checkPath,
     acquireType,
+    acquireScope,
     acquireSubject,
     acquireBody,
-    acquireCardId,
     acquireBreakingChange,
+    acquireCoAuthor,
     getValue(config, ['hooks', 'before'], { default: emptyWare }),
     doCommit,
     getValue(config, ['hooks', 'after'], { default: emptyWare })
