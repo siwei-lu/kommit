@@ -25,6 +25,6 @@ export async function getPlugin(path = pluginFile) {
     return emptyPlugin
   }
 
-  const plugin: Middleware = require(path)
+  const plugin: Middleware = await import(path)
   return plugin
 }

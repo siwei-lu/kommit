@@ -139,10 +139,10 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@idan-loo/middleware@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@idan-loo/middleware/-/middleware-1.0.0.tgz#32ca29039452f547bceb3b2f24b720785aceb05e"
-  integrity sha512-uyWo95KewMqfbKzOUa1knjLms9rASly4aTYY6uK7RKmpK2Eu12Ieot+Adc47FWJ5t7+ZyrINPopn3RFzx86K7g==
+"@idan-loo/middleware@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@idan-loo/middleware/-/middleware-2.0.0.tgz#8ec786187018e77505aef6afe71e918dd2521bd8"
+  integrity sha512-IMtjg7aleytyiR1ltHGVqQ0Ul+5hqV96pXysP6cxVJpIkV86LA6JSNMw/+2n//tgPOv8myJO7BJjLk/tiNCbbg==
 
 "@jest/console@^24.7.1":
   version "24.7.1"
