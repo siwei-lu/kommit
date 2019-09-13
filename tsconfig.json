@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es2015",
+    "target": "esNext",
     "baseUrl": "./src",
     "moduleResolution": "node",
     "esModuleInterop": true,
@@ -8,7 +8,6 @@
       "~/*": ["./*"]
     },
     "declaration": true,
-    "declarationDir": "./types",
-    "module": "esNext"
+    "declarationDir": "./types"
   }
 }

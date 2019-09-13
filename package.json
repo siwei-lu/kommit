@@ -16,6 +16,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/fs-extra": "^8.0.0",
+    "@types/get-value": "^3.0.1",
     "@types/inquirer": "^6.5.0",
     "tacer-template-bin": "^0.5.0"
   },
@@ -23,6 +24,7 @@
     "@idan-loo/middleware": "^2.0.0",
     "@types/jest": "^24.0.15",
     "fs-extra": "^8.1.0",
+    "get-value": "^3.0.1",
     "inquirer": "^7.0.0",
     "ora": "^3.4.0"
   },

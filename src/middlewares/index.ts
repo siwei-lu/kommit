@@ -1,4 +1,5 @@
-import { compose } from '@idan-loo/middleware'
+import { compose, Next } from '@idan-loo/middleware'
+import getValue from 'get-value'
 import { checkPath } from './path'
 import { acquireType } from './type'
 import { acquireSubject } from './subject'
@@ -6,11 +7,16 @@ import { acquireBody } from './body'
 import { acquireCardId } from './card'
 import { acquireBreakingChange } from './breakingChange'
 import { doCommit } from './commit'
-import { getPlugin } from '~/config'
 import { Context } from '~/types'
+import { getConfig } from '~/config'
+
+export async function emptyWare(_: Context, next: Next) {
+  return next()
+}
 
 export async function exec(ctx: Context) {
-  const plugin = await getPlugin()
+  const config = await getConfig()
+
   const execute = compose(
     checkPath,
     acquireType,
@@ -18,8 +24,9 @@ export async function exec(ctx: Context) {
     acquireBody,
     acquireCardId,
     acquireBreakingChange,
-    plugin,
-    doCommit
+    getValue(config, ['hooks', 'before'], { default: emptyWare }),
+    doCommit,
+    getValue(config, ['hooks', 'after'], { default: emptyWare })
   )
 
   await execute(ctx)

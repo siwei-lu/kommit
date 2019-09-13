@@ -1,30 +1,20 @@
 import { join } from 'path'
-import { readFile, pathExists } from 'fs-extra'
+import { pathExists } from 'fs-extra'
 import { Middleware } from '@idan-loo/middleware'
 
 export type Config = {
+  scopes?: string[]
   members?: string[]
+  hooks?: { before: Middleware; after: Middleware }
 }
 
 const configDir = join(process.cwd(), '.kommit')
-const configFile = join(configDir, 'config.json')
-const pluginFile = join(configDir, 'plugin.js')
-const emptyPlugin = async () => {}
+const configFile = join(configDir, 'config.js')
 
-export async function getConfig(path = configFile) {
+export async function getConfig(path = configFile): Promise<Config> {
   if (!(await pathExists(path))) {
     return {}
   }
 
-  const config: Config = await readFile(path, 'utf8').then(JSON.parse)
-  return config
-}
-
-export async function getPlugin(path = pluginFile) {
-  if (!(await pathExists(path))) {
-    return emptyPlugin
-  }
-
-  const plugin: Middleware = await import(path)
-  return plugin
+  return require(path)
 }
