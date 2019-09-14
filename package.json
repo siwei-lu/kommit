@@ -10,7 +10,8 @@
   "scripts": {
     "start": "tacer-script start",
     "build": "tacer-script build",
-    "test": "tacer-script test"
+    "test": "tacer-script test",
+    "prepublishOnly": "npm run build"
   },
   "author": "Idan Loo <im@siwei.lu>",
   "license": "MIT",
