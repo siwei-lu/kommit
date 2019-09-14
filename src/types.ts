@@ -12,8 +12,8 @@ export type CommitType =
 export type Context = {
   path: string
   type: CommitType
-  scope: string
   subject: string
+  scope?: string
   body?: string
   footer?: string
   error?: Error

@@ -11,7 +11,9 @@ export async function isRepository(path: string) {
 export async function commit(ctx: Context) {
   const message = messageOf(ctx)
 
-  const cp = spawn('git', ['commit', '-m', message])
+  const cp = spawn('git', ['commit', '-m', message], {
+    cwd: ctx.path,
+  })
 
   let stdout = ''
   cp.stdout.on('data', chunk => (stdout += chunk))

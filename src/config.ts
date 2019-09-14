@@ -1,4 +1,4 @@
-import { join } from 'path'
+import { resolve } from 'path'
 import { pathExists } from 'fs-extra'
 import { Middleware } from '@idan-loo/middleware'
 
@@ -8,13 +8,14 @@ export type Config = {
   hooks?: { before: Middleware; after: Middleware }
 }
 
-const configDir = join(process.cwd(), '.kommit')
-const configFile = join(configDir, 'config.js')
+const configFileOf = (path: string) => resolve(path, '.kommit', 'config.js')
 
-export async function getConfig(path = configFile): Promise<Config> {
-  if (!(await pathExists(path))) {
+export async function getConfigIn(path: string): Promise<Config> {
+  const file = configFileOf(path)
+
+  if (!(await pathExists(file))) {
     return {}
   }
 
-  return require(path)
+  return require(file)
 }

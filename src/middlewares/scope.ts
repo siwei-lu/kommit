@@ -1,7 +1,7 @@
 import { Next } from '@idan-loo/middleware'
 import { Context } from '~/types'
 import { ListQuestion, prompt } from 'inquirer'
-import { getConfig } from '~/config'
+import { getConfigIn } from '~/config'
 
 const scopeQuestion: ListQuestion = {
   type: 'list',
@@ -10,7 +10,7 @@ const scopeQuestion: ListQuestion = {
 }
 
 export async function acquireScope(ctx: Context, next: Next) {
-  const { scopes } = await getConfig()
+  const { scopes } = await getConfigIn(ctx.path)
 
   if (scopes) {
     scopeQuestion.choices = scopes.map(e => ({ value: e }))

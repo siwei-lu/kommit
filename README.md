@@ -1,6 +1,6 @@
 # kommit
 
-Format your git commit messages by a set of plugins.
+Format your git commit messages by a set of middlewares.
 
 ## Usage
 
@@ -55,7 +55,7 @@ module.exports = {
 
 #### Fields
 
-- members: String[]
+- members: `String[]`
 
   The members field should list all the members in your team. So it is able to choose one as your pair. That is for the Pair Programming.
 
@@ -69,7 +69,7 @@ module.exports = {
   }
   ```
 
-- hooks: Object
+- hooks: `Object`
 
   The hooks fields currently contain two hooks. The before hook is a middleware which will be executed before committing, whereas the after hook will be executed after committing.
 
@@ -95,7 +95,7 @@ module.exports = {
 
   To know more things about how to create middlewares, check [here](https://github.com/IdanLoo/middleware)
 
-- scopes: String[]
+- scopes: `String[]`
 
   The scopes field consists of a set of scopes. It will be chosen while committing.
 
@@ -105,9 +105,43 @@ module.exports = {
   }
   ```
 
+### Context
+
+The Context consists of a set of values shared with every middleware.
+
+#### Fields
+
+- path: `String`
+
+  The path you are committing in is `process.cwd()` by default.
+
+- type: `CommitType`
+
+  The type you choosing from a group of commit types. It defined by ACMF includes `feat`, `fix`, `test`, `chore`, `docs`, `refactor`, `style`, `ci` and `pref`.
+
+- subject: `String`
+
+  The subject of this change you filling.
+
+- scope?: `String`
+
+  The scope you choosing from a pre-defined `scopes` in the `config.js`. It will be passed if the `scopes` fields is not provided.
+
+- body?: `String`
+
+  The body describes the details of this committing.
+
+- footer?: `String`
+
+  The footer consists of some extra information of this committing.
+
+- error?: `Error`
+
+  The error is the result of committing. It only can be used in the after hook.
+
 ## Summary
 
-Commit Message Format is playing a more and more important role on cooperating development. [Angular Commit Message Format](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#commit-message-format), one of the most well known formats, helps us make git flows clearer and easier to generate documentations.
+Commit Message Format is playing a more and more important role on cooperating development. [Angular Commit Message Format (ACMF)](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#commit-message-format), one of the most well known formats, helps us make git flows clearer and easier to generate documentations.
 
 The Question is, however, this format is a bit complicated. You have to remember lots of concepts and make sure your cooperators know them as well. That does make newbies even some developers who know it well confused.
 

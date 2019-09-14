@@ -1,7 +1,7 @@
 import { ListQuestion, prompt } from 'inquirer'
 import { Next } from '@idan-loo/middleware'
 import { Context } from '~/types'
-import { getConfig } from '~/config'
+import { getConfigIn } from '~/config'
 import { concatWithNewLines } from '~/helper'
 
 const coAuthorQuestion: ListQuestion = {
@@ -11,7 +11,7 @@ const coAuthorQuestion: ListQuestion = {
 }
 
 export async function acquireCoAuthor(ctx: Context, next: Next) {
-  const { members } = await getConfig()
+  const { members } = await getConfigIn(ctx.path)
 
   if (members) {
     coAuthorQuestion.choices = members.map(e => ({ value: e }))

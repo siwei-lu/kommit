@@ -7,7 +7,7 @@ import { acquireBody } from './body'
 import { acquireBreakingChange } from './breakingChange'
 import { doCommit } from './commit'
 import { Context } from '~/types'
-import { getConfig } from '~/config'
+import { getConfigIn } from '~/config'
 import { acquireScope } from './scope'
 import { acquireCoAuthor } from './author'
 
@@ -16,7 +16,7 @@ export async function emptyWare(_: Context, next: Next) {
 }
 
 export async function exec(ctx: Context) {
-  const config = await getConfig()
+  const config = await getConfigIn(ctx.path)
 
   const execute = compose(
     checkPath,
