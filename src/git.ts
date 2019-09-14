@@ -1,7 +1,7 @@
 import { pathExists } from 'fs-extra'
 import { resolve } from 'path'
 import { Context } from './types'
-import { spawnSync } from 'child_process'
+import { spawn } from 'child_process'
 
 export async function isRepository(path: string) {
   const subdir = resolve(path, '.git')
@@ -11,13 +11,20 @@ export async function isRepository(path: string) {
 export async function commit(ctx: Context) {
   const message = messageOf(ctx)
 
-  const { error } = spawnSync('git', ['commit', '-m', message], {
-    encoding: 'utf8',
-  })
+  const cp = spawn('git', ['commit', '-m', message])
 
-  if (error) {
-    throw error
-  }
+  let stdout = ''
+  cp.stdout.on('data', chunk => (stdout += chunk))
+
+  return new Promise((resolve, reject) => {
+    cp.addListener('exit', code => {
+      if (code === 0) {
+        return resolve()
+      }
+
+      reject(new Error(stdout))
+    })
+  })
 }
 
 export function messageOf({ type, scope, subject, body, footer }: Context) {

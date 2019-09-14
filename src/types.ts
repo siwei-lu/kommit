@@ -16,4 +16,5 @@ export type Context = {
   subject: string
   body?: string
   footer?: string
+  error?: Error
 }

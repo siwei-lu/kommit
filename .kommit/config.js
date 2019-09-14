@@ -5,7 +5,7 @@ module.exports = {
 
   hooks: {
     async before(ctx, next) {
-      console.log(ctx)
+      /* do something here */
       return next()
     },
   },
