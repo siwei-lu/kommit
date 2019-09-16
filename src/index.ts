@@ -9,7 +9,7 @@ export async function main() {
     path: process.cwd(),
     type: 'feat',
     subject: '',
-    scope: '#',
+    scope: '',
   }
 
   await exec(ctx)
