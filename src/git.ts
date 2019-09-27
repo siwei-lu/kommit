@@ -1,7 +1,7 @@
 import { pathExists } from 'fs-extra'
 import { resolve } from 'path'
 import { Context } from './types'
-import { spawn } from 'child_process'
+import { spawn, execSync } from 'child_process'
 
 export async function isRepository(path: string) {
   const subdir = resolve(path, '.git')
@@ -31,11 +31,27 @@ export async function commit(ctx: Context) {
 
 export function messageOf({ type, scope, subject, body, footer }: Context) {
   let message = `${type}${scope ? `(${scope})` : ''}: ${subject}`
-  ;[body, footer].forEach(m => {
-    if (m) {
-      message += `\n\n${m}`
-    }
-  })
+
+  if (body) {
+    message += '\n\n' + body
+  }
+
+  if (footer.length) {
+    message += '\n\n' + footer.join('\n\n')
+  }
 
   return message
+}
+
+export function getUser(path: string) {
+  const name = execSync('git config user.name', { encoding: 'utf8', cwd: path })
+  const email = execSync('git config user.email', {
+    encoding: 'utf8',
+    cwd: path,
+  })
+
+  return {
+    name: name.replace(/\s+$/, ''),
+    email: email.replace(/\s+$/, ''),
+  }
 }
