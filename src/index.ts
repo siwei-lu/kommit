@@ -10,6 +10,7 @@ export async function main() {
     type: 'feat',
     subject: '',
     scope: '',
+    footer: [],
   }
 
   await exec(ctx)
