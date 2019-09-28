@@ -46,7 +46,7 @@ jobs:
           name: Publish
           command: npm publish
 
-  store:
+  release:
     docker:
       - image: circleci/node
     steps:
@@ -57,7 +57,7 @@ jobs:
           command: npm install --no-save pkg
       - run:
           name: Deploy
-          command: yarn deploy
+          command: yarn pkg bin/index.js
       - store_artifacts:
           path: ./index-linux
           destination: kommit-linux
@@ -67,18 +67,6 @@ jobs:
       - store_artifacts:
           path: ./index-win.exe
           destination: kommit-win.exe
-      
-  release:
-    docker:
-      - image: cibuilds/github:0.10
-    steps:
-      - attach_workspace:
-          at: ./artifacts
-      - run:
-          name: "Publish Release on GitHub"
-          command: |
-            VERSION=$(my-binary --version)
-            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${VERSION} ./artifacts/
 
 workflows:
   version: 2
@@ -88,9 +76,12 @@ workflows:
       - test:
           requires:
             - init
-      - store:
+      - release:
           requires:
             - test
+          filters:
+            branches:
+              only: maste
       - publish:
           requires:
             - test

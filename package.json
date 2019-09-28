@@ -10,7 +10,6 @@
   "scripts": {
     "start": "tacer-script start",
     "build": "tacer-script build",
-    "deploy": "pkg bin/index.js",
     "test": "tacer-script test",
     "prepublishOnly": "npm run build"
   },
