@@ -1,7 +1,7 @@
 import { ListQuestion, prompt } from 'inquirer'
 import { Next } from '@idan-loo/middleware'
-import { Context } from '~/types'
-import { getConfigIn } from '~/config'
+import { Context } from '../types'
+import { getConfigIn } from '../config'
 
 const None = 'None'
 

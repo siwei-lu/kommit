@@ -1,4 +1,4 @@
-import { checkPath } from '~/middlewares/path'
+import { checkPath } from '../../src/middlewares/path'
 
 test('should not go next when a non-repository path given', async () => {
   const ctx: any = { path: __dirname }

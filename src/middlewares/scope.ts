@@ -1,7 +1,7 @@
 import { Next } from '@idan-loo/middleware'
-import { Context } from '~/types'
+import { Context } from '../types'
 import { ListQuestion, prompt } from 'inquirer'
-import { getConfigIn } from '~/config'
+import { getConfigIn } from '../config'
 
 const scopeQuestion: ListQuestion = {
   type: 'list',

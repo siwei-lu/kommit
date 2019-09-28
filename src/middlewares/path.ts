@@ -1,6 +1,6 @@
 import { Next } from '@idan-loo/middleware'
-import { Context } from '~/types'
-import { isRepository } from '~/git'
+import { Context } from '../types'
+import { isRepository } from '../git'
 
 export async function checkPath({ path }: Context, next: Next) {
   if (await isRepository(path)) {

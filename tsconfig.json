@@ -1,12 +1,9 @@
 {
   "compilerOptions": {
-    "target": "esNext",
     "baseUrl": "./src",
+    "target": "esNext",
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "paths": {
-      "~/*": ["./*"]
-    },
     "declaration": true,
     "declarationDir": "./types"
   }

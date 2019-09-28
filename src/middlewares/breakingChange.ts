@@ -1,6 +1,6 @@
 import { InputQuestion, prompt } from 'inquirer'
 import { Next } from '@idan-loo/middleware'
-import { Context } from '~/types'
+import { Context } from '../types'
 
 const breakChangeQuestion: InputQuestion = {
   type: 'input',

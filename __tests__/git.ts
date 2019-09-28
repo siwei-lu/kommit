@@ -1,6 +1,6 @@
 import { resolve } from 'path'
-import { isRepository, messageOf } from '~/git'
-import { Context } from '~/types'
+import { isRepository, messageOf } from '../src/git'
+import { Context } from '../src/types'
 
 describe('isRepository()', () => {
   test('should return true if a repository path given', async () => {
@@ -16,6 +16,7 @@ describe('isRepository()', () => {
 describe('messageOf()', () => {
   test('integrates the context without a body and a footer', () => {
     const ctx: Context = {
+      user: { name: 'test', email: 'test' },
       path: process.cwd(),
       type: 'feat',
       scope: null,
@@ -30,6 +31,7 @@ describe('messageOf()', () => {
 
   test('integrates the context including a body', () => {
     const ctx: Context = {
+      user: { name: 'test', email: 'test' },
       path: process.cwd(),
       type: 'feat',
       scope: null,
@@ -44,6 +46,7 @@ describe('messageOf()', () => {
 
   test('integrates the context including a footer', () => {
     const ctx: Context = {
+      user: { name: 'test', email: 'test' },
       path: process.cwd(),
       type: 'feat',
       scope: null,
@@ -60,6 +63,7 @@ describe('messageOf()', () => {
 
   test('integrates the context including both a footer and a body', () => {
     const ctx: Context = {
+      user: { name: 'test', email: 'test' },
       path: process.cwd(),
       type: 'feat',
       scope: null,

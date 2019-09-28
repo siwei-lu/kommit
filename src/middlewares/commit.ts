@@ -1,7 +1,7 @@
 import ora from 'ora'
-import { Context } from '~/types'
+import { Context } from '../types'
 import { Next } from '@idan-loo/middleware'
-import { commit } from '~/git'
+import { commit } from '../git'
 
 export async function doCommit(ctx: Context, next: Next) {
   const spinner = ora('Running').start()
