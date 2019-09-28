@@ -131,9 +131,9 @@ The Context consists of a set of values shared with every middleware.
 
   The body describes the details of this committing.
 
-- footer?: `String`
+- footer?: `String[]`
 
-  The footer consists of some extra information of this committing.
+  The footer is an array consisting of some extra information of this committing.
 
 - error?: `Error`
 
