@@ -1,6 +1,6 @@
 {
   "name": "kommit",
-  "version": "0.4.3",
+  "version": "0.5.0",
   "description": "Format your git commit messages by a set of middlewares",
   "main": "./dist",
   "typings": "./types/index.d.ts",
