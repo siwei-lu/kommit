@@ -24,7 +24,7 @@ export async function acquireCoAuthor(ctx: Context, next: Next) {
   const { name, email } = getUser(ctx.path)
   const me = [name, email].join(' ')
 
-  if (coAuthor !== None || coAuthor !== me) {
+  if (coAuthor !== None && coAuthor !== me) {
     ctx.footer.push(`Co-authored-by: ${coAuthor}`)
   }
 
